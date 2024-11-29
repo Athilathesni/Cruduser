@@ -44,17 +44,17 @@ const Show = () => {
 
   return (
     <div className="details-container">
-      <div className="card">
+      <div className="card1">
         <div className="content">
         <div className="card-image">
           <img src={employee.pic} alt="Employee" />
         </div>
-        <div className="card-details">
+        <div className="card1-details">
           <h2>Name: {employee.name}</h2>
           <p>Des: {employee.des}</p>
         </div>
         </div>
-        <div className="card-actions">
+        <div className="card1-actions">
           <Link to={`/Edit/${id}`}>
             <button className="btn-edit">Edit</button>
           </Link>

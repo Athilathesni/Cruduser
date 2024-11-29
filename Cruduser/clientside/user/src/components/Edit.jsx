@@ -10,6 +10,11 @@ const Edit = () => {
     name: '',
     des: '',
   })
+  const [change,setChange]=useState({
+    pic: '',
+    name: '',
+    des: '',
+  })
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -24,15 +29,15 @@ const Edit = () => {
       }
       const res = await response.json()
       setVal(res)
+      setChange(res)
     } catch (err) {
       setError(err.message)
     }
-  };
+  }
 
   const handleChange = (e) => {
-    const { name, value } = e.target
     setVal((prev) => ({ ...prev,[e.target.name]:e.target.value}))
-  };
+  }
 
   const handleImageChange =async (e) => {
     const pic= await converBase64(e.target.files[0])
@@ -55,11 +60,16 @@ const Edit = () => {
   const handleClick = async (e) => {
     e.preventDefault()
     console.log(val)
+
+    if(val===change){
+      alert("no change detected")
+    }else{
     
     try {
       const response = await fetch(`http://localhost:4000/api/update/${id}`, {
         method: 'PUT',
-        body:JSON.stringify(val),
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify(val),
       })
       if (!response.ok) {
         throw new Error(`Failed to update: ${response.status}`)
@@ -71,6 +81,7 @@ const Edit = () => {
       console.error('Error updating data:', err)
       alert('Failed to update employee')
     }
+  }
   }
   if (!val) return <div>Loading...</div>
 

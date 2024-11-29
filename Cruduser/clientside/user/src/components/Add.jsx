@@ -62,6 +62,7 @@ const Add = () => {
   return (
     <div className="add-form-container">
       <form >
+        <h2 className='h2'>Add Employee</h2>
         <div>
         {val.pic && <img src={val.pic} alt="Preview" />}
         </div>
