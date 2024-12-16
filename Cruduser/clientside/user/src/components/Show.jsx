@@ -46,7 +46,7 @@ const Show = () => {
     <div className="details-container">
       <div className="card1">
         <div className="content">
-        <div className="card-image">
+        <div className="card1-image">
           <img src={employee.pic} alt="Employee" />
         </div>
         <div className="card1-details">
